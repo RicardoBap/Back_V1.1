@@ -29,14 +29,15 @@ public class CorsFilter implements Filter {
 			throws IOException, ServletException {		
 			
 		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) resp;		
+		HttpServletResponse response = (HttpServletResponse) resp;	
 		
 		response.setHeader("Access-Control-Allow-Origin", originPermitida);  //  salvavidasApiProperty.getOriginPermitida()
 		response.setHeader("Access-Control-Allow-Credentials", "true");
+		response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 		
 		if ("OPTIONS".equals(request.getMethod()) && originPermitida.equals(request.getHeader("Origin"))) {
 			response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS"); // salvavidasApiProperty.getOriginPermitida()			
-			response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
+			//response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept");
 			response.setHeader("Access-Control-Max-Age", "3600");
 			
 			response.setStatus(HttpServletResponse.SC_OK);
