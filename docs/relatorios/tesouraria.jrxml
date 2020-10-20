@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tesouraria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69d71297-3780-4d73-92e6-a490006866a9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="DT_INICIO" class="java.util.Date"/>
+	<parameter name="DT_FIM" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="tipo" class="com.ricbap.salvavidas.api.model.TipoLancamento"/>
+	<field name="data_vencimento" class="java.util.Date"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="valor" class="java.math.BigDecimal"/>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="0" width="525" height="30" forecolor="#0000C0" uuid="1ce8e023-f345-4636-8551-12674c74d263"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRUPO SALVA VIDAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="30" width="525" height="20" uuid="bc7d975b-5360-4f10-9367-45a99749a1dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua: Guaraci, n° 38 - Vila Ângela Marta - Campinas - S.P.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="50" width="525" height="15" uuid="95688e7b-2f12-40e3-a2d3-56336ea986c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reuniões de 2°, 4° e 6° feiras das 19:00 às 21:00 horas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="10" width="525" height="30" forecolor="#C00000" uuid="d3622a97-4307-4d42-ba46-0f8b02072959"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Relatório do período de "+DATEFORMAT($P{DT_INICIO},"dd/MM/yyyy" )+" até "+DATEFORMAT($P{DT_FIM},"dd/MM/yyyy" )]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<rectangle>
+				<reportElement x="30" y="0" width="525" height="25" backcolor="#606060" uuid="b0a63ed6-f903-4fe1-b46d-6ade3f78a0c6"/>
+			</rectangle>
+			<line>
+				<reportElement x="110" y="0" width="1" height="25" uuid="6d109aed-540f-4b45-9f36-22630ec957dd"/>
+			</line>
+			<line>
+				<reportElement x="190" y="0" width="1" height="25" uuid="0b45dde9-099f-42d3-84cf-2910db586cc7"/>
+			</line>
+			<line>
+				<reportElement x="475" y="0" width="1" height="25" uuid="17f80b14-4c22-4f03-b22c-c55595455521"/>
+			</line>
+			<staticText>
+				<reportElement x="31" y="1" width="78" height="23" forecolor="#FFFFFF" uuid="2fe435cb-886b-4102-b8e9-0c84aebbcfc4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="1" width="78" height="23" forecolor="#FFFFFF" uuid="842b82f1-6e50-42d8-a63f-9190acfa5bbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="1" width="285" height="23" forecolor="#FFFFFF" uuid="2182e572-0c94-46d3-81a8-540f6a434cac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="1" width="78" height="23" forecolor="#FFFFFF" uuid="d1252e08-0e33-4974-9c79-1a4110da31be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="30" y="0" width="1" height="24" uuid="df25e4c0-78cb-4c91-9b11-abcbc0cfd5ca"/>
+			</line>
+			<line>
+				<reportElement x="110" y="0" width="1" height="24" uuid="93a1a645-fec7-4e57-9257-608eb8ffaeb0"/>
+			</line>
+			<line>
+				<reportElement x="190" y="0" width="1" height="24" uuid="199594df-da2e-4cf0-b22a-50c92bc0f859"/>
+			</line>
+			<line>
+				<reportElement x="475" y="0" width="1" height="24" uuid="4b2badc7-c56c-424d-824f-edc2a5aa17c5"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="24" uuid="8bf65bdf-e4c7-4034-878a-58c6c411a66f"/>
+			</line>
+			<line>
+				<reportElement x="30" y="24" width="526" height="1" uuid="3811fd6d-fe88-44f6-95c1-6a2b5a8efd2d"/>
+			</line>
+			<textField>
+				<reportElement x="31" y="1" width="78" height="23" uuid="78259686-9059-49c9-952f-d7a0fe2f329a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}.getDescricao()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="1" width="78" height="23" uuid="9a489f15-734a-4485-a347-40feefad09bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[DATEFORMAT($F{data_vencimento},"dd/MM/yyyy" )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="1" width="274" height="23" uuid="64db2c4c-59c7-415b-a702-458b58c439ee"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="476" y="1" width="68" height="23" uuid="c193553c-69d8-4b22-a37d-efa88c24cd7c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="10" width="100" height="25" uuid="067e891a-2023-483c-9132-f17f852e98d8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="10" width="150" height="25" uuid="13a8f065-7bb7-4256-ac0b-c96516931a61"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data "+DATEFORMAT(TODAY( ),"dd/MM/yyyy" )]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
