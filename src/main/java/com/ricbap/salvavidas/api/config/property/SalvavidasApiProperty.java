@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("salvavidas")
 public class SalvavidasApiProperty {
 	
-	private String originPermitida = "https://salvavidas-ui.herokuapp.com"; //"http://localhost:4200"; // "https://salvavidas-ui.herokuapp.com"; 
+	private String originPermitida = "https://salvavidas.tk"; //"https://salvavidas-ui.herokuapp.com"; //"http://localhost:4200"; // "https://salvavidas-ui.herokuapp.com"; 
 	
 	public String getOriginPermitida() {
 		return originPermitida;
