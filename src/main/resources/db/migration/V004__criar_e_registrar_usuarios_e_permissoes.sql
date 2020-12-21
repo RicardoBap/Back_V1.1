@@ -21,7 +21,7 @@ CREATE TABLE usuario_permissao (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 																									
 INSERT INTO usuario (codigo, nome, email, senha, senha_usuario, ativo) VALUES (1, 'Administrador', 'ric_bap@hotmail.com', '$2a$10$CGMvlPHc51JqzXxEA5IbDecya8EU589DHVZ20diqgX6MXIYQ9tfEC', 'ric_bap@mail', 1);
-INSERT INTO usuario (codigo, nome, email, senha, senha_usuario, ativo) VALUES (2, 'Heloisa Baptistini', 'heloisa.ciulla@gmail.com', '$2a$10$OahgZpsZEimxcPnTbC/J9uBurlX3QGRPCsvLN2RoGymGv0HHPMlpC', 'maria@mail', 1);
+INSERT INTO usuario (codigo, nome, email, senha, senha_usuario, ativo) VALUES (2, 'Maria', 'maria@mail.com', '$2a$10$OahgZpsZEimxcPnTbC/J9uBurlX3QGRPCsvLN2RoGymGv0HHPMlpC', 'maria@mail', 1);
 
 
 INSERT INTO permissao (codigo, descricao) VALUES (1, 'ROLE_CADASTRAR_CATEGORIA');
