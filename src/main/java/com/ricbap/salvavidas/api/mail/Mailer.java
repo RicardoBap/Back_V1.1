@@ -109,8 +109,7 @@ public class Mailer {
 		
 		Context context = new Context(new Locale("pt", "BR"));
 		context.setVariable("logo", "logo");
-		context.setVariable("logo2", "logo2");
-		context.setVariable("logo3", "logo3");
+		context.setVariable("logoazul", "logoazul");
 		
 		variaveis.entrySet().forEach(
 				e -> context.setVariable(e.getKey(), e.getValue()));
@@ -131,8 +130,8 @@ public class Mailer {
 			helper.setSubject(assunto);
 			helper.setText(mensagem, true);
 			
-			helper.addInline("logo", new ClassPathResource("static/images/aa-logo-white2.png"));			
-			helper.addInline("logo3", new ClassPathResource("static/images/aa-logo.png"));
+			helper.addInline("logo", new ClassPathResource("static/images/aa-logo-white.png"));	
+			helper.addInline("logoazul", new ClassPathResource("static/images/aa-logo.png"));	
 			
 			mailSender.send(mimeMessage);
 		} catch (MessagingException e) {

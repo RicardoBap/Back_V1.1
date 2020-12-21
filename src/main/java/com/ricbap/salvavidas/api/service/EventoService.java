@@ -40,8 +40,8 @@ public class EventoService {
 	@Autowired
 	private Mailer mailer;	
 	
-	//@Scheduled(cron = "0 0 19 10,20 * ?")
-	@Scheduled(fixedDelay = 1000 * 60 * 30)
+	@Scheduled(cron = "0 0 19 10,20 * ?")
+	//@Scheduled(fixedDelay = 1000 * 60 * 30)
 	public void convidarContatosParaEvento() {		
 			
 		if(logger.isDebugEnabled()) {
@@ -72,7 +72,7 @@ public class EventoService {
 	
 //-------------------------------------------------------------------------------------------	
 	
-	@Scheduled(cron = "0 00 19 * * SUN")
+	@Scheduled(cron = "0 0 19 * * MON")
 	//@Scheduled(fixedDelay = 1000 * 60 * 30)
 	public void avisarSobreEventos() {		
 		

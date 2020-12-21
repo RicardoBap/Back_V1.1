@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,6 +58,7 @@ public class EventoResource {
 	 */	
 	
 	@GetMapping(params = "resumo")
+	//@PreAuthorize("hasAuthority('ROLE_PESQUISAR_EVENTO) and #oauth2.hasScope('read')")
 	public Page<ResumoEvento> pesquisaResumo(EventoFilter filter, Pageable pageable) {
 		return eventoRepository.pesquisar(filter, pageable);
 	}
@@ -67,7 +69,7 @@ public class EventoResource {
 	}
 	
 	@PostMapping
-	//@PreAuthorize("hasAuthority('ROLE_CADASTRAR_EVENTO') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_EVENTO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Evento> cadastrar(@Valid @RequestBody Evento evento, HttpServletResponse response) {		
 		Evento eventoSalvo = eventoService.salvar(evento);		
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, eventoSalvo.getCodigo()));		
@@ -82,7 +84,7 @@ public class EventoResource {
 	}
 	
 	@PutMapping("/{codigo}")
-	//@PreAuthorize("hasAuthority('ROLE_CADASTRAR_EVENTO') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_EVENTO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Evento> atualizar(@PathVariable Long codigo, @Valid @RequestBody Evento evento) {
 		Evento eventoSalvo = eventoService.atualizar(codigo, evento);
 		return ResponseEntity.ok(eventoSalvo);
@@ -90,7 +92,7 @@ public class EventoResource {
 	
 	@DeleteMapping("/{codigo}")	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	//@PreAuthorize("hasAuthority('ROLE_REMOVER_EVENTO') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_EVENTO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Long codigo) {
 		eventoRepository.delete(codigo);
 	}

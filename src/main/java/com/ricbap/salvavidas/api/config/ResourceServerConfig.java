@@ -50,7 +50,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/eventos/nav-eventos").permitAll()				
+				.antMatchers("/eventos/nav-eventos").permitAll()
 				.antMatchers("/grupos/nav-grupos").permitAll()
 				.antMatchers("/grupos/{codigo}").permitAll()
 				.anyRequest().authenticated()
