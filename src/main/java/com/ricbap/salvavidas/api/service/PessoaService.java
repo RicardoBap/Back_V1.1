@@ -22,7 +22,7 @@ public class PessoaService {
 
 	public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
 		Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
-		pessoaSalva.setAtivo(ativo);
+		pessoaSalva.setAtivo(ativo); //<---- Inativa pessoa no ato de cadastrar
 		pessoaRepository.save(pessoaSalva);
 	}
 	

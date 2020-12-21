@@ -2,6 +2,7 @@ package com.ricbap.salvavidas.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,10 +18,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
 
+import com.ricbap.salvavidas.api.security.AppUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@ComponentScan(basePackageClasses = AppUserDetailsService.class)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {	
 	
 	/*@Autowired
@@ -44,13 +48,19 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-				.antMatchers("/categorias").permitAll()
+		http
+			.authorizeRequests()
+				.antMatchers("/eventos/nav-eventos").permitAll()				
+				.antMatchers("/grupos/nav-grupos").permitAll()
+				.antMatchers("/grupos/{codigo}").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			//.httpBasic().and()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.csrf().disable();			
+			.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+			.csrf()
+				.disable();			
 	}
 	
 	@Override

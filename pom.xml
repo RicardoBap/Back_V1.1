@@ -21,6 +21,16 @@
 		<jasperreports.version>6.5.1</jasperreports.version>
 		<jasperreports-functions.version>6.5.1</jasperreports-functions.version>
 		<jasperreports-fonts.version>6.0.0</jasperreports-fonts.version>
+		
+		<!-- THYMELEAF | VERSOES -->
+		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
+		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+		<thymeleaf-extras-java8time.version>3.0.0.RELEASE</thymeleaf-extras-java8time.version>
+		
+		<!--  S3 AMAZON  -->
+		<aws-java-sdk.version>1.11.274</aws-java-sdk.version>		
+		
 	</properties>	
 
 	<dependencies>
@@ -125,8 +135,48 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
-		</dependency>		
+		</dependency>	
 		
+		<!-- CACHE | GUAVA -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- SPRING CONTEXT SUPPORT | GUAVA -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>			
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- JAVAMAIL -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
+		<!-- THYMELEAF -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
+		</dependency>
+		
+		<!--  S3 AMAZON  -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>${aws-java-sdk.version}</version>
+		</dependency>
+		
+				
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

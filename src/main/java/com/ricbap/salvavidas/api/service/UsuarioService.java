@@ -1,5 +1,7 @@
 package com.ricbap.salvavidas.api.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -8,14 +10,20 @@ import org.springframework.stereotype.Service;
 
 import com.ricbap.salvavidas.api.model.Usuario;
 import com.ricbap.salvavidas.api.repository.UsuarioRepository;
+import com.ricbap.salvavidas.api.service.exception.EmailUsuarioJaCadastradoException;
 
 @Service
 public class UsuarioService {
 	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioRepository usuarioRepository;		
 
 	public Usuario criar(Usuario usuario) {
+		Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());		
+		if(usuarioExistente.isPresent()) {
+			throw new EmailUsuarioJaCadastradoException();
+		}	
+		
 		usuario = salvarSenha(usuario);		
 		usuario.setSenha(criptografaSenha(usuario.getSenha()));
 		
@@ -48,8 +56,15 @@ public class UsuarioService {
 		if (usuarioSalvo == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
-		usuarioSalvo.setSenha(null);//oculta senha no template na hora de carregar usuario
+		//usuarioSalvo.setSenha(null);//oculta senha no template na hora de carregar usuario
 		return usuarioSalvo;
 	}
+	
+	public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
+		Usuario usuarioSalvo = buscarUsuarioPeloCodigo(codigo);
+		usuarioSalvo.setAtivo(ativo);
+		usuarioRepository.save(usuarioSalvo);
+	}
+	
 	
 }

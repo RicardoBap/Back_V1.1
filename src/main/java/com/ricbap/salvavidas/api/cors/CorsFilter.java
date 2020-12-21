@@ -22,7 +22,7 @@ public class CorsFilter implements Filter {
 	//@Autowired
 	//private SalvavidasApiProperty salvavidasApiProperty;	
 	
-	private String originPermitida = "https://salvavidas.tk"; //http://localhost:4200"; //"https://salvavidas-ui.herokuapp.com"; //"http://localhost:4200"; // TODO: configurar para ambientes diferentes
+	private String originPermitida = "http://localhost:4200"; //"https://salvavidas.tk"; //http://localhost:4200"; //"https://salvavidas-ui.herokuapp.com"; //"http://localhost:4200"; // TODO: configurar para ambientes diferentes
 	                                  
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)

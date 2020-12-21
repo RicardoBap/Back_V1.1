@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style type="text/css">
+
+.place {
+	 border: 1px solid #606060;
+	 padding: 10px;
+}
+
+.titulo-convite {
+	color: white;
+	background-color: #A9A9A9; 
+	text-align: center;
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+	padding: 5px;
+}
+
+.data-hora {
+	color: #606060;
+}
+
+.header {
+	background-color: #E0E0FF;	
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+.header h2 {	
+	margin: 0;
+}
+
+.header img {
+	float: left;
+	margin: 2px 5px 0 0;
+	padding: 2px;
+}
+
+.linha-header {	
+	color: #FFF;
+    display: block;
+    
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 30px;
+}
+
+.footer {
+	background-color: #E8E8E8;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.footer h3 {
+	padding-top: 5px;
+	margin: 0 ;
+}
+
+.footer img {
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 2px;
+}
+
+.clear {
+	clear: both;
+}
+
+</style>
+</head>
+
+<body style="font-family: Arial; font-size: 14px;" >
+	
+	<div class='header  place' style="margin: auto;  margin-bottom: 10px;"  th:each="evento : ${eventos}">
+		<img style="width: 50px;" src="../../static/images/aa-logo-white.png"  th:src="|cid:${logo}|" />
+		<h2 style="color: #FFF;">Alcoólicos Anônimos</h2>	
+		<hr class="linha-header">	
+
+	
+	<h2 style="color: #606060; text-align: center;"><span th:text="|${evento.grupo.nome}|"></span></h2>			
+			
+		<h2 class="titulo-convite" >
+			TEM O PRAZER DE CONVIDAR PARA
+		</h2>
+			
+		<h1 style="text-align: center"><span th:text="|${evento.tipoEvento}|"></span></h1>
+		<h2 style="text-align: center"><br> <!--  <span  th:text="|${evento.grupo.nome}|"></span>  -->
+			Tema: <span  th:text="|${evento.tema}|"></span><br>
+			Palestrante: <span th:text="|${evento.palestrante}|"></span>
+		</h2>	
+		
+		<hr>
+			
+		<h3 class="data-hora" >Data e hora do evento:</h3>
+		<h4>
+			Dia: <span th:text="|${#temporals.format(evento.dataHoraEvento, 'dd/MM/yyyy')}|"></span> <br>
+			Hora: <span th:text="|${#temporals.format(evento.dataHoraEvento, 'HH:mm')}|"></span> horas
+		</h4>
+			
+		<hr>
+			
+		<h3 class="data-hora">Local do evento:</h3>			
+		<h4>
+			<span th:text="|${evento.grupo.logradouro}|"></span>, nº <span th:text="|${evento.grupo.numero}|"></span><br>
+			<span th:text="|${evento.grupo.complemento}|"> </span>
+			<span th:text="|${evento.grupo.bairro}|"></span> - <span th:text="|${evento.grupo.cidade.nome}|"></span>
+			/<span th:text="|${evento.grupo.cidade.estado.sigla}|"></span>
+		</h4>		
+	
+	</div>  
+	
+	<div class='footer'>
+	<img style="width: 70px;" src="../../static/images/aa-logo.png"  th:src="|cid:${logo3}|" />
+	<h3  style="color: #0000C0;">Grupo Salva vidas</h3>
+	<hr style="color: #0000C0; border-style: solid; border-width: 1px">
+	<p style="color: #0000C0; margin-block-start: 0;">Reuniões 2º, 4º, e 6º feiras às 19:00 horas. 
+		<span style="margin-left: 10px;">www.salvavidas-aa.net</span>
+	</p>
+	<div class='clear'></div>
+</div>
+
+</body>
+
+
+
+</html> 

@@ -21,7 +21,7 @@ import com.ricbap.salvavidas.api.config.token.CustomTokenEnhancer;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {	
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -33,7 +33,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.secret("@ngul@r0")
 			.scopes("read", "write")
 			.authorizedGrantTypes("password", "refresh_token")  
-			.accessTokenValiditySeconds(450)
+			.accessTokenValiditySeconds(1500)
 			.refreshTokenValiditySeconds(3600 * 24)
 		.and()
 			.withClient("mobile")

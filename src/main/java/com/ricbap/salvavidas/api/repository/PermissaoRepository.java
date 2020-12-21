@@ -7,4 +7,3 @@ import com.ricbap.salvavidas.api.model.Permissao;
 public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
 
 }
-

@@ -3,7 +3,8 @@ CREATE TABLE usuario(
 	nome VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL UNIQUE,
 	senha VARCHAR(150) NOT NULL,
-	senha_usuario VARCHAR (150) 
+	senha_usuario VARCHAR (150),
+	ativo BOOLEAN DEFAULT TRUE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE permissao (
@@ -19,8 +20,8 @@ CREATE TABLE usuario_permissao (
 	FOREIGN KEY (codigo_permissao) REFERENCES permissao(codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 																									
-INSERT INTO usuario (codigo, nome, email, senha, senha_usuario) VALUES (1, 'Administrador', 'ric_bap@hotmail.com', '$2a$10$CGMvlPHc51JqzXxEA5IbDecya8EU589DHVZ20diqgX6MXIYQ9tfEC', 'ric_bap@mail');
-INSERT INTO usuario (codigo, nome, email, senha, senha_usuario) VALUES (2, 'Maria Silva', 'maria@hotmail.com', '$2a$10$OahgZpsZEimxcPnTbC/J9uBurlX3QGRPCsvLN2RoGymGv0HHPMlpC', 'maria@mail');
+INSERT INTO usuario (codigo, nome, email, senha, senha_usuario, ativo) VALUES (1, 'Administrador', 'ric_bap@hotmail.com', '$2a$10$CGMvlPHc51JqzXxEA5IbDecya8EU589DHVZ20diqgX6MXIYQ9tfEC', 'ric_bap@mail', 1);
+INSERT INTO usuario (codigo, nome, email, senha, senha_usuario, ativo) VALUES (2, 'Heloisa Baptistini', 'heloisa.ciulla@gmail.com', '$2a$10$OahgZpsZEimxcPnTbC/J9uBurlX3QGRPCsvLN2RoGymGv0HHPMlpC', 'maria@mail', 1);
 
 
 INSERT INTO permissao (codigo, descricao) VALUES (1, 'ROLE_CADASTRAR_CATEGORIA');
